@@ -64,7 +64,7 @@ void imprimirGrafo(struct Grafo* grafo) {
 int main() {
 
     // Caminho do arquivo
-    char *nome_arquivo = "/home/joao/BTI/3º SEMESTRE/LABORATÓRIO DE ESTRUTURA DE DADOS II/Projetos LD2/file.txt"; 
+    char *nome_arquivo = "file.txt"; 
 
     // Arquivo é aberto
     FILE * arquivo = fopen(nome_arquivo, "r");
