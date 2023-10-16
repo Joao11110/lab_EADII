@@ -50,38 +50,43 @@ void criarAresta(struct Grafo* grafo, int origem, int destino) {
 // Função para imprimir o grafo
 void imprimirGrafo(struct Grafo* grafo) {
     printf("\n\n");
+    int cont = 1;
+
     for (int i = 0; i < grafo->num_vertices; i++) {
+        int num_amigos = 0;
         struct Node* temp = grafo->listaAdj[i];
-        printf("Vertice %d:", i);
+        printf("Vertice %d:\t", cont);
         while (temp != NULL) {
+            num_amigos++;
             printf(" -> %d", temp->destino);
             temp = temp->proximo;
         }
-        printf("\n");
+        printf("\nTotal: %d \n\n", num_amigos);
+        cont++;
     }
 }
 
 int main() {
 
     // Caminho do arquivo
-    char *nome_arquivo = "file.txt"; 
+    char *nome_arquivo = "/home/joao/BTI/3º SEMESTRE/LABORATÓRIO DE ESTRUTURA DE DADOS II/Projetos LD2/arquivo.txt"; 
 
     // Arquivo é aberto
     FILE * arquivo = fopen(nome_arquivo, "r");
 
     // Verifica se o arquivo não foi aberto
     if (arquivo == NULL) {
-        printf("\n\nErro ao abrir o arquivo!\n");
+        printf("\nErro ao abrir o arquivo!\n");
         exit(1);
     }
 
     // Arquivo foi aberto com sucesso
     else {
-        printf("\n\nArquivo foi lido com sucesso!\n");
+        printf("\nArquivo foi lido com sucesso!\n");
     }
 
     // Definição do número de vertices para criar grafo
-    int num_vertices = 7;
+    int num_vertices = 10;
     struct Grafo* meuGrafo = criarGrafo(num_vertices);
 
     // Os dados do arquivo são lidos
@@ -94,10 +99,9 @@ int main() {
     fclose(arquivo);  
 
     // Imprime o grafo com os dados do arquivo
-    printf("\n\n------ Grafo ------\n");
+    printf("\n------ Grafo ------\n");
     imprimirGrafo(meuGrafo);
-    printf("\n\n-------------------\n");
-    printf("\n\n");
+    printf("\n-------------------\n");
 
     return 0;
 }
